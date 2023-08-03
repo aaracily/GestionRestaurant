@@ -11,7 +11,7 @@ public class Dish {
     private int id;
     private String name;
     private String description;
-    private float  price;
+    private double  price;
     private String category;
 
 }

@@ -22,8 +22,8 @@ public class DishEntity {
     @Column(name="Descripcion")
     private String descripcion;
     @Column(name="Precio")
-    private float precio;
+    private double precio;
     @Column(name="Categoria")
-    private float categoria;
+    private String categoria;
 
 }

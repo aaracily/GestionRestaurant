@@ -8,33 +8,46 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class DishServiceImpl implements DishService {
     private final DishRepository repository;
     private final DishMapper mapper;
     @Override
-    public Dish create(Dish dish) {
-        return repository.save(mapper.toDishEntity(dish));
+    public Optional<Dish> create(Dish dish) {
+        return Optional.of(mapper.toDish(repository.save(mapper.toDishEntity(dish))));
     }
 
     @Override
-    public List<Dish> findAll() {
-        return null;
+    public Optional<List<Dish>> findAll() {
+       return Optional.of(mapper.toDishes(repository.findAll()));
     }
 
     @Override
-    public Dish update(Dish dish) {
-        return null;
+    public Optional<Dish> update(Dish dish) {
+        if (repository.existsById(dish.getId())){
+            return Optional.of(mapper.toDish(repository.save(mapper.toDishEntity(dish))));
+
+        }
+        return Optional.of(new Dish());
+
     }
 
     @Override
-    public Dish findById(int id) {
-        return null;
+    public Optional<Dish> findById(int id) {
+        return  repository.findById(id).map(mapper::toDish);
     }
 
     @Override
-    public void delete(int id) {
+    public boolean delete(int id) {
+        if (repository.existsById(id)){
+            repository.deleteById(id);
+            return true;
+        }
+
+        return false;
 
     }
 }
