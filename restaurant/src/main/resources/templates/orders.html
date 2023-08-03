@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.com">
+<head>
+  <meta charset="UTF-8"content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Pedidos</title>
+</head>
+<body>
+<div class="container">
+  <h1>Pedidos</h1>
+  <div class="container" >
+    <div class="row">
+      <div class="col-lg-8 col-md-6 col-sm-6 container justify-content-center card">
+    <h3>Buscador</h3>
+        <div class="row">
+          <form method="get" th:action="@{/order/search}">
+            <label class=" col-form-label" for="waiterId">Camarero</label>
+            <select class="form-select" id="waiterId" name="waiterId"
+                    type="number">
+              <option th:each="order:${orders}" th:text
+                      ="${order.getWaiter().getName()}" th:value="${order.getWaiter().getId()}"
+                      th:href="@{/order/search/{id}(id=${order.getId()})}"   >
+              </option>
+
+            </select>
+
+            <button class="btn-success">Buscar</button>
+          </form>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <table class="table table-bordered dataTable" id="tablaPedidos">
+    <thead class="table-dark">
+    <th>ID</th>
+    <th>Mesa</th>
+    <th>Camarero</th>
+    <th>Fecha</th>
+    <th>Total</th>
+    <th>Acción</th>
+    </thead>
+    <tbody>
+    <tr th:each="list: ${orders}">
+      <td th:text="${list.getId()}"></td>
+
+      <td th:text="${list.getTable().getNumber()}"></td>
+      <td th:text="${list.getWaiter().getName()}" ></td>
+      <td th:text="${list.getDate()}"></td>
+      <td th:text="${list.getTotal()}"></td>
+      <td>
+        <a th:href="@{/order/edit/{id}(id=${list.getId()})}" class="btn btn-primary">Editar</a>
+      </td>
+
+    </tbody>
+  </table>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+     $(document).ready(function() {
+         $('#tablaPedidos').DataTable();
+     });
+ </script>
+</body>
+</html>

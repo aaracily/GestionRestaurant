@@ -83,3 +83,14 @@ INSERT INTO Detalle_Pedido VALUES (4, 5, 1, 9.00);
 INSERT INTO Detalle_Pedido VALUES (5, 1, 1, 7.50);
 INSERT INTO Detalle_Pedido VALUES (5, 5, 1, 9.00);
 INSERT INTO Detalle_Pedido VALUES (5, 3, 1, 5.00);
+
+ 
+ CREATE table user (
+    username varchar(20) not null primary key,
+    password varchar(100) not null,
+    role varchar(100)
+);
+
+insert into user (username, password, role)
+values  ('admin', '$2a$10$p2fj8xeK42w4P2FuF4chK.NPPaR5K7MuwWgya1SE9pnKWqRbZk.9S', 'ADMIN'),
+        ('rrhh', '$2a$10$p2fj8xeK42w4P2FuF4chK.NPPaR5K7MuwWgya1SE9pnKWqRbZk.9S', 'RRHH');
