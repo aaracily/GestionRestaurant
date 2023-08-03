@@ -1,8 +1,13 @@
 # GestionRestaurant
 SpringBoot/MySQL
+ Ingrese a rama master para ver desarrollo de los ejercicios.
+ 
+Examen de Certificación Aracily Morales
+https://github.com/aaracily/GestionRestaurant/edit/main/README.md
 
-Examen de Certificación
 Plan Formativo: Desarrollador de Aplicaciones web Full Stack Java Trainee
+
+
 
 Tipos de Usuario y Contraseña 
 
