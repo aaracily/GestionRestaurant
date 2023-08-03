@@ -1,3 +1,5 @@
+CREATE database gestionrestaurant;
+use gestionrestaurant;
 CREATE TABLE Mesa (
   ID INT PRIMARY KEY,
   Numero INT,
@@ -15,9 +17,9 @@ CREATE TABLE Camarero (
 CREATE TABLE Plato (
   ID INT PRIMARY KEY,
   Nombre VARCHAR(255),
-  Descripción VARCHAR(255),
+  Descripcion VARCHAR(255),
   Precio DECIMAL(5,2),
-  Categoría VARCHAR(255)
+  Categoria VARCHAR(255)
 );
 
 CREATE TABLE Pedido (
